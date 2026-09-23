@@ -1,291 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lt">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome UI — CSS interface showcase</title>
-    <meta name="description" content="A single-page interface showcase built with plain HTML, CSS and JavaScript — layered gradients, transitions and responsive layout, no framework.">
-    <meta name="keywords" content="HTML, CSS, JavaScript, UI, responsive design, animation">
-    <meta name="author" content="Aldas">
-    <link rel="icon" href="./img/A%20U.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&amp;display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wayfare — kelionių žemėlapis</title>
+  <meta name="description" content="Wayfare — vieno puslapio kelionių svetainė: automobiliu, laivu, autobusu ar tiesiog keliu. Gyvas žemėlapio fonas, šviesus ir tamsus režimai.">
+  <meta name="theme-color" content="#F4EEE1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#12201A" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <!-- Nustato temą prieš piešiant puslapį, kad jis nesumirgėtų -->
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+      try {
+        var saved = localStorage.getItem('wayfare-theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.dataset.theme = saved;
+      } catch (e) { /* localStorage gali būti užblokuotas */ }
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&amp;family=Karla:wght@400;600;700&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="page">
-            <header>
-                <div class="logo">
-                    <img src="./img/A U.svg" alt="Styled letters">
-                    <h2>Awesome ui</h2>
-                    
-                </div>
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
-                        <li><a href="index.html">Store</a></li>
-                        <li><a href="services.html">Use cases</a></li>
-                        <button class="btn reg-btn">register</button>
-                    </ul>
-                    <div class="hamburger">
-                        <img src="./img/Icon.svg" alt="meniu">
-                    </div>
-                </nav>
-            </header>
+  <a class="skip-link" href="#main">Pereiti prie turinio</a>
 
-            <main>
-                <!-- A-SECTION -->
-                <section class="a-section">
-                    <div class="hero">
-                        <h1>Lorem ipsum dolor sit amet, consectetur</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Augue et eros, pellentesque et.
-                            Tristique ullamcorper ac pharetra in nisi sit vivamus lorem. </p>
-                        <button class="btn">
-                            <span>Get started</span>
-                            <img src="./img/Vector.svg" alt="">
-                        </button>
-                    </div>
+  <!-- Gyvas fonas: švytėjimai, žemėlapio linijos, maršrutai ir dalelės -->
+  <div class="map-bg" aria-hidden="true">
+    <div class="map-bg__glow map-bg__glow--sun"></div>
+    <div class="map-bg__glow map-bg__glow--forest"></div>
+    <div class="map-bg__contours"></div>
+    <div class="map-bg__routes"></div>
+    <div class="map-bg__particles"></div>
+  </div>
 
-                    <div class="cool-svg">
-                        <img src="./img/Group 2574.svg" alt="Girl with a rocket playing tennis">
-                    </div>
-                </section>
-                <!-- B-SECTION -->
-                <section class="b-section">
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="#top" aria-label="Wayfare — į puslapio pradžią">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M16 5l4 11-4 11-4-11z" class="brand__needle" />
+          <circle cx="16" cy="16" r="2" fill="var(--surface)" />
+        </svg>
+        <span>wayfare</span>
+      </a>
 
-                    <div class="accent-card">
-                        <div class="accent-card-top">
-                            <span>mot consectet</span>
-                            <h2>amet,consectet</h2>
-                        </div>
-                        <div class="accent-card-bottom">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae nullam aliquet
-                                dignissim quis. Vel, faucibus ac justo aliquam donec enim, commodo fermentum vitae. Et
-                                velit sceleris</p>
-                            <button class="btn accent-card-bottom-btn">
-                                <span>Get started</span>
-                                <img src="./img/Vector.svg" alt="">
-                            </button>
-                        </div>
-                    </div>
+      <nav class="nav" aria-label="Pagrindinis meniu">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+          <span class="nav__toggle-bar"></span>
+          <span class="visually-hidden">Meniu</span>
+        </button>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="#keliones">Kelionės</a></li>
+          <li><a href="#kodel-mes">Kodėl mes</a></li>
+          <li><a href="#atsiliepimai">Atsiliepimai</a></li>
+          <li><a href="#naujienlaiskis">Naujienlaiškis</a></li>
+        </ul>
+      </nav>
 
-                    <div class="cards-ctn">
-                        <div class="card" onmouseover="changeImage(this, './img/smart-car-white.svg')"
-                            onmouseout="changeImage(this, './img/smart-car.svg')">
-                            <img src="./img/smart-car.svg" alt="Car Rental">
-                            <h3>Car Rental</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae </p>
-                        </div>
-                        <div class="card" onmouseover="changeImage(this, './img/ship-white.svg')"
-                            onmouseout="changeImage(this, './img/ship.svg')">
-                            <img src="./img/ship.svg" alt="Boat Cruise">
-                            <h3>Boat Cruise</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae </p>
-                        </div>
-                        <div class="card" onmouseover="changeImage(this, './img/bus-white.svg')"
-                            onmouseout="changeImage(this, './img/bus.svg')">
-                            <img src="./img/bus.svg" alt="Bus Trip">
-                            <h3>Bus Trip</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae </p>
-                        </div>
-                        <div class="card" onmouseover="changeImage(this, './img/driving-white.svg')"
-                            onmouseout="changeImage(this, './img/driving.svg')">
-                            <img src="./img/driving.svg" alt="Road Trip">
-                            <h3>Road Trip</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae </p>
-                        </div>
-                    </div>
-                </section>
-                <!-- C-SECTION -->
-                <section class="c-section">
-                    <small>MOT consectet</small>
-                    <h2>amet,consectet iquet </h2>
-                </section>
-
-                <!-- D-SECTION -->
-                <section class="d-section">
-                    <div class="d-section-ctn">
-                        <div class="d-section-evcard" onmouseover="changeImageD_s(this, './img/python-white.svg')"
-                            onmouseout="changeImageD_s(this, './img/python.svg')">
-                            <img src="./img/python.svg" />
-                            <h2><span>mot</span> consectet</h2>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, ipsum.</p>
-                            <div class="extra-img">
-                                <img src="./img/Dots 8px.1.png" alt="Extra Image" />
-                            </div>
-                        </div>
-
-                        <div class="d-section-evcard" onmouseover="changeImageD_s(this, './img/iost-white.svg')"
-                            onmouseout="changeImageD_s(this, './img/iost.svg')">
-                            <img src="./img/iost.svg" />
-                            <h2><span>mot</span> consectet</h2>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, ipsum.</p>
-                        </div>
-
-                        <div class="d-section-evcard" onmouseover="changeImageD_s(this, './img/stacks-white.svg')"
-                            onmouseout="changeImageD_s(this, './img/stacks.svg')">
-                            <img src="./img/stacks.svg" />
-                            <h2><span>mot</span> consectet</h2>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, ipsum.</p>
-                            <div class="extra-img extra-img-right">
-                                <img src="./img/Rectangle 497.png" alt="Extra Image" />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- E-SECTION -->
-                <section class="e-section">
-                    <div class="e-section-ctn">
-
-                        <div class="e-section-img-ctn">
-                            <img src="./img/Group 2571.png" alt="">
-                        </div>
-                        <div class="e-section-txt-ctn">
-                            <small>MOT consectet</small>
-                            <h2>amet,consectet</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae nullam aliquet
-                                dignissim quis. Vel, faucibus ac justo aliquam donec enim, commodo fermentum vitae. Et
-                                velit sceleris </p>
-                            <button class="btn">
-                                <span>Get started</span>
-                                <img src="./img/Vector.svg" alt="lorem5">
-                            </button>
-                        </div>
-                    </div>
-
-                </section>
-
-                <!-- F-SECTION  -->
-                <section class="f-section">
-                    <div class="f-section-ctn">
-                        <div class="f-section-top">
-                            <div class="f-section-top-right">
-                                <small>MOT consectet</small>
-                                <h2>amet,consectet Sit quis </h2>
-                            </div>
-                            <div class="f-section-top-left">
-                                <div class="button-container">
-                                    <button class="back" onmouseover="changeImageD_s(this, './img/left-arrow-white.svg')"
-                                        onmouseout="changeImageD_s(this, './img/left-arrow-green.svg')">
-                                        <img src="./img/left-arrow-green.svg" alt="Back">
-                                    </button>
-                                    <button class="forward"
-                                        onmouseover="changeImageD_s(this, './img/right-arrow-white.svg')"
-                                        onmouseout="changeImageD_s(this, './img/right-arrow-green.svg')">
-                                        <img src="./img/right-arrow-green.svg" alt="Forward">
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="f-section-bottom">
-                            <div class="f-section-bottom-card">
-                                <img src="./img/leon-ell-f6HbVnGtNnY-unsplash-removebg-preview 1.png"
-                                    alt="Beutiful girl with skirt.">
-                                <h3>Tayo Oshinuwa</h3>
-                                <span class="user-name">CTO May &amp; Baker</span>
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae“</p>
-                            </div>
-                            <div class="f-section-bottom-card">
-                                <img src="./img/philip-martin-D6MmPV6SHqg-unsplash-removebg-preview 1.png"
-                                    alt="Black man with style..">
-                                <h3>Tayo Oshinuwa</h3>
-                                <span class="user-name">CTO May &amp; Baker</span>
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae“</p>
-                            </div>
-                            <div class="f-section-bottom-card">
-                                <img src="./img/r.png" alt="Man looks like boss.">
-                                <h3>Tayo Oshinuwa</h3>
-                                <span class="user-name">CTO May &amp; Baker</span>
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae“</p>
-                            </div>
-                            <div class="f-section-bottom-card">
-                                <img src="./img/leon-ell-f6HbVnGtNnY-unsplash-removebg-preview 1.png"
-                                    alt="Beutiful girl with skirt.">
-                                <h3>Tayo Oshinuwa</h3>
-                                <span class="user-name">CTO May &amp; Baker</span>
-                                <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sit quis vitae“</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
-
-
-            </main>
-
-            <footer class="footer-section">
-                <div class="footer-ctn">
-                    <!--Footer A -->
-                    <div class="footer-section-a">
-                        <div class="footer-logo">
-                            <img src="./img/A U.svg" alt="Styled letters">
-                            <h2>Awesomu UI</h2>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia sit quidem debitis.</p>
-                        <p>Copyright &amp;copy; 2024 Awesome</p>
-                        <p>All rights reserved</p>
-                        <div class="social-icons">
-                            <a href="#"><i class="fab fa-instagram"></i> <span class="sr-only">Instagram</span></a>
-                            <a href="#"><i class="fab fa-linkedin"></i> <span class="sr-only">LinkedIn</span></a>
-                            <a href="#"><i class="fab fa-twitter"></i> <span class="sr-only">Twitter</span></a>
-                            <a href="#"><i class="fab fa-youtube"></i> <span class="sr-only">YouTube</span></a>
-                        </div>
-
-                    </div>
-
-                    <div class="footer-midle">
-
-                        <!--Footer B -->
-                        <div class="footer-section-b">
-                            <h2>company</h2>
-                            <ul>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                                <li><a href="index.html">Store</a></li>
-                                <li><a href="services.html">Use Cases</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                            </ul>
-                        </div>
-
-                        <!--Footer C -->
-                        <div class="footer-section-c">
-                            <h2>Support</h2>
-                            <ul>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="documentation.html">Documentation</a></li>
-                                <li><a href="support.html">Support</a></li>
-                                <li><a href="community.html">Community</a></li>
-                                <li><a href="partners.html">Partners</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!--Footer D -->
-                    <div class="footer-section-d">
-                        <h2>send message</h2>
-                        <textarea placeholder="Your email address"></textarea>
-                        <button class="btn">
-                            <span>Send message</span>
-                            <img src="./img/Vector.svg" alt="">
-                        </button>
-                    </div>
-                </div>
-            </footer>
-
-        </div>
+      <button class="theme-toggle" type="button" aria-label="Perjungti šviesų / tamsų režimą">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle class="theme-toggle__sun" cx="12" cy="12" r="5" />
+          <path class="theme-toggle__rays" d="M12 1v3M12 20v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M1 12h3M20 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+        </svg>
+      </button>
     </div>
-    <script src="index.js"></script>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- HERO -->
+    <section class="hero wrap" id="top">
+      <div class="hero__text">
+        <p class="eyebrow">Kelionių žemėlapis · nuo 2024</p>
+        <h1>Kiekviena kelionė prasideda <em>čia</em></h1>
+        <p class="hero__lead">Automobilis, laivas, autobusas ar tiesiog ilgas kelias. Išsirink savo transportą, o maršrutą nubraižysime kartu.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#keliones">
+            <span>Pradėti kelionę</span>
+            <span class="btn__vehicle" aria-hidden="true"></span>
+          </a>
+          <a class="btn btn--ghost" href="#kodel-mes">Kaip tai veikia</a>
+        </div>
+
+        <dl class="stats">
+          <div class="stats__item">
+            <dt>maršrutų</dt>
+            <dd><span data-count="128">128</span>+</dd>
+          </div>
+          <div class="stats__item">
+            <dt>transporto rūšys</dt>
+            <dd><span data-count="4">4</span></dd>
+          </div>
+          <div class="stats__item">
+            <dt>laimingų keliautojų</dt>
+            <dd><span data-count="98">98</span>%</dd>
+          </div>
+        </dl>
+      </div>
+
+      <figure class="hero__art">
+        <div class="hero__stamp" aria-hidden="true">
+          <span>N</span>
+        </div>
+        <img src="images/hero-traveler.svg" width="343" height="586" alt="Iliustracija: aktyvi keliautoja mojuoja teniso raketė." fetchpriority="high">
+      </figure>
+    </section>
+
+    <!-- KELIONĖS + FILTRAS -->
+    <section class="trips wrap" id="keliones" aria-labelledby="trips-title">
+      <div class="section-head reveal">
+        <p class="eyebrow">Maršrutai</p>
+        <h2 id="trips-title">Kokia tavo kelionė?</h2>
+        <p>Pasirink transportą, ir fone užsidegs jo maršrutas.</p>
+      </div>
+
+      <div class="filter reveal" role="group" aria-label="Filtruoti keliones pagal transportą">
+        <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">Visos</button>
+        <button class="chip" type="button" data-filter="car" aria-pressed="false"><span class="icon icon--car" aria-hidden="true"></span>Automobilis</button>
+        <button class="chip" type="button" data-filter="ship" aria-pressed="false"><span class="icon icon--ship" aria-hidden="true"></span>Laivas</button>
+        <button class="chip" type="button" data-filter="bus" aria-pressed="false"><span class="icon icon--bus" aria-hidden="true"></span>Autobusas</button>
+        <button class="chip" type="button" data-filter="road" aria-pressed="false"><span class="icon icon--road" aria-hidden="true"></span>Kelias</button>
+      </div>
+
+      <p class="visually-hidden" aria-live="polite" id="filter-status"></p>
+
+      <ul class="tickets">
+        <li class="ticket reveal" data-type="car">
+          <span class="ticket__icon icon icon--car" aria-hidden="true"></span>
+          <h3>Automobilio nuoma</h3>
+          <p>Pasiimk raktelius oro uoste ir važiuok ten, kur veda smalsumas.</p>
+          <p class="ticket__meta"><span>VNO → Nida</span><span>312 km · 4 val.</span></p>
+        </li>
+        <li class="ticket reveal" data-type="ship">
+          <span class="ticket__icon icon icon--ship" aria-hidden="true"></span>
+          <h3>Laivo kruizas</h3>
+          <p>Ramūs vandenys, jūros vėjas ir saulėlydžiai, kurių nepamirši.</p>
+          <p class="ticket__meta"><span>Klaipėda → Kylis</span><span>21 val.</span></p>
+        </li>
+        <li class="ticket reveal" data-type="bus">
+          <span class="ticket__icon icon icon--bus" aria-hidden="true"></span>
+          <h3>Kelionė autobusu</h3>
+          <p>Atsilošk, įsijunk mėgstamą muziką ir leisk vairuoti kitiems.</p>
+          <p class="ticket__meta"><span>Vilnius → Ryga</span><span>294 km · 4 val.</span></p>
+        </li>
+        <li class="ticket reveal" data-type="road">
+          <span class="ticket__icon icon icon--road" aria-hidden="true"></span>
+          <h3>Kelionė keliu</h3>
+          <p>Tik tu, žemėlapis ir horizontas. Sustok, kur tik panorėsi.</p>
+          <p class="ticket__meta"><span>Via Baltica</span><span>970 km · 3 d.</span></p>
+        </li>
+        <li class="ticket reveal" data-type="ship">
+          <span class="ticket__icon icon icon--ship" aria-hidden="true"></span>
+          <h3>Ežerų plaukimas</h3>
+          <p>Baidarės ir mažas laivelis per Aukštaitijos ežerų grandinę.</p>
+          <p class="ticket__meta"><span>Palūšė → Ginučiai</span><span>18 km · 1 d.</span></p>
+        </li>
+        <li class="ticket reveal" data-type="car">
+          <span class="ticket__icon icon icon--car" aria-hidden="true"></span>
+          <h3>Pajūrio savaitgalis</h3>
+          <p>Kopos, žuvienė ir vėjas plaukuose. Viskas per vieną savaitgalį.</p>
+          <p class="ticket__meta"><span>Kaunas → Palanga</span><span>215 km · 3 val.</span></p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- KODĖL MES -->
+    <section class="why" id="kodel-mes" aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Kodėl mes</p>
+          <h2 id="why-title">Kelionė be streso</h2>
+        </div>
+        <ul class="why__grid">
+          <li class="feature reveal">
+            <svg class="feature__icon" viewBox="0 0 32 32" aria-hidden="true">
+              <circle cx="16" cy="16" r="13" />
+              <path d="M16 7l3.5 9L16 25l-3.5-9z" />
+            </svg>
+            <h3>Maršrutas pagal tave</h3>
+            <p>Pasakyk, ką mėgsti, o mes sudėliosime sustojimus ir laiką.</p>
+          </li>
+          <li class="feature reveal">
+            <svg class="feature__icon" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z" />
+              <path d="M11 16l3.5 3.5L21 13" />
+            </svg>
+            <h3>Saugūs partneriai</h3>
+            <p>Dirbame tik su patikrintais vežėjais ir nuomos punktais.</p>
+          </li>
+          <li class="feature reveal">
+            <svg class="feature__icon" viewBox="0 0 32 32" aria-hidden="true">
+              <circle cx="16" cy="16" r="13" />
+              <path d="M16 9v7l5 3" />
+            </svg>
+            <h3>Pagalba 24/7</h3>
+            <p>Vėluoja keltas ar pradurta padanga? Atsakome bet kuriuo paros metu.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PLANUOJAME KARTU -->
+    <section class="together wrap" aria-labelledby="together-title">
+      <figure class="together__img reveal">
+        <img src="images/team-planning.webp" width="563" height="544" loading="lazy" alt="Komanda prie stalo su nešiojamu kompiuteriu planuoja kelionę.">
+      </figure>
+      <div class="together__text reveal">
+        <p class="eyebrow">Planuojame kartu</p>
+        <h2 id="together-title">Tavo kelionė, mūsų žemėlapis</h2>
+        <p>Mūsų komanda išbandė kiekvieną maršrutą pati. Todėl žinome, kur verta sustoti kavos, kur geriausias vaizdas ir kur laukia paslėpti perlai.</p>
+        <a class="btn btn--primary" href="#naujienlaiskis">
+          <span>Gauti idėjų</span>
+          <span class="btn__vehicle" aria-hidden="true"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ATSILIEPIMAI -->
+    <section class="reviews wrap" id="atsiliepimai" aria-labelledby="reviews-title">
+      <div class="reviews__head">
+        <div class="section-head reveal">
+          <p class="eyebrow">Atsiliepimai</p>
+          <h2 id="reviews-title">Ką sako keliautojai</h2>
+        </div>
+        <div class="reviews__nav">
+          <button class="round-btn" type="button" data-slide="-1" aria-label="Ankstesnis atsiliepimas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+          <button class="round-btn" type="button" data-slide="1" aria-label="Kitas atsiliepimas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <ul class="reviews__track" tabindex="0" aria-label="Atsiliepimai, slinkite į šonus">
+        <li class="review">
+          <img src="images/testimonial-leon-ell.webp" width="154" height="268" loading="lazy" alt="Moteris ryškiu raštuotu sijonu.">
+          <blockquote>
+            <p>„Kruizas buvo tobulas. Viską suplanavo už mane, o aš tik mėgavausi saulėlydžiais.“</p>
+          </blockquote>
+          <p class="review__name">Mia Rivers</p>
+          <p class="review__role">Laivo kruizas · Klaipėda</p>
+        </li>
+        <li class="review">
+          <img src="images/testimonial-philip-martin.webp" width="175" height="268" loading="lazy" alt="Vyras tamsiu megztiniu ir oranžine kepure.">
+          <blockquote>
+            <p>„Via Baltica per tris dienas. Kiekvienas sustojimas buvo lyg maža staigmena.“</p>
+          </blockquote>
+          <p class="review__name">Sam Carter</p>
+          <p class="review__role">Kelionė keliu · Via Baltica</p>
+        </li>
+        <li class="review">
+          <img src="images/avatar-alex-doe.svg" width="160" height="160" loading="lazy" alt="Alex Doe avataras iš inicialų AD.">
+          <blockquote>
+            <p>„Pirmą kartą keliavau autobusu ir nė karto nesijaudinau. Pagalba atsakė per minutę.“</p>
+          </blockquote>
+          <p class="review__name">Alex Doe</p>
+          <p class="review__role">Autobusas · Vilnius → Ryga</p>
+        </li>
+        <li class="review">
+          <img src="images/avatar-jo-lane.svg" width="160" height="160" loading="lazy" alt="Jo Lane avataras iš inicialų JL.">
+          <blockquote>
+            <p>„Išsinuomojom automobilį oro uoste ir po keturių valandų jau stovėjom ant kopos.“</p>
+          </blockquote>
+          <p class="review__name">Jo Lane</p>
+          <p class="review__role">Automobilio nuoma · Nida</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- NAUJIENLAIŠKIS -->
+    <section class="newsletter wrap" id="naujienlaiskis" aria-labelledby="newsletter-title">
+      <div class="newsletter__card reveal">
+        <div>
+          <p class="eyebrow">Naujienlaiškis</p>
+          <h2 id="newsletter-title">Gauk naujus maršrutus pirmas</h2>
+          <p>Kartą per mėnesį: viena nauja kelionė ir jokio šlamšto.</p>
+        </div>
+        <form class="newsletter__form" novalidate>
+          <label for="email">El. pašto adresas</label>
+          <div class="newsletter__row">
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="vardas@pavyzdys.lt" required aria-describedby="email-msg">
+            <button class="btn btn--primary" type="submit">
+              <span>Prenumeruoti</span>
+              <span class="btn__plane" aria-hidden="true"></span>
+            </button>
+          </div>
+          <p class="newsletter__msg" id="email-msg" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <div>
+        <a class="brand" href="#top">
+          <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M16 5l4 11-4 11-4-11z" class="brand__needle" />
+          </svg>
+          <span>wayfare</span>
+        </a>
+        <p>Išgalvotas kelionių prekės ženklas, sukurtas portfolio projektui.</p>
+      </div>
+      <nav aria-label="Poraštės meniu">
+        <ul class="site-footer__links">
+          <li><a href="#keliones">Kelionės</a></li>
+          <li><a href="#kodel-mes">Kodėl mes</a></li>
+          <li><a href="#atsiliepimai">Atsiliepimai</a></li>
+          <li><a href="#naujienlaiskis">Naujienlaiškis</a></li>
+        </ul>
+      </nav>
+      <p class="site-footer__copy">© 2026 brutall100 · <a href="https://github.com/brutall100/wayfare-travel-landing">Kodas GitHub'e</a></p>
+    </div>
+  </footer>
 </body>
 
 </html>

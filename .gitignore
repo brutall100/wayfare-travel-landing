@@ -1,0 +1,14 @@
+# Priklausomybės
+node_modules/
+
+# Aplinkos kintamieji (niekada nekeliami į git)
+.env
+.env.*
+!.env.example
+
+# Sistemos ir redaktorių failai
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
